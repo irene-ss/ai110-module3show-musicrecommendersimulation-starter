@@ -31,6 +31,9 @@ You can include a simple diagram or bullet list if helpful.
 
 ---
 
+Real‑world recommendation engines combine collaborative filtering (learning from other users’ behavior) and content‑based filtering (analyzing song attributes like mood, tempo, or energy). Platforms track signals such as likes, skips, replays, playlist additions, and listening duration to understand evolving taste. In this simplified version, we focus entirely on content‑based filtering: each song is scored based on how well its mood, genre, and energy match the user’s preferences, with mood carrying the strongest influence. This makes the system easy to understand while still reflecting how emotional tone often drives real listening choices.
+formula used: 2.0⋅1[genre matches]+ 3.0⋅1[mood matches]+ 1.5⋅(1−∣energy of song − energy of user∣)
+
 ## Getting Started
 
 ### Setup
