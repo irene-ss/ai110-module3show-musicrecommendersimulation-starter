@@ -3,59 +3,37 @@
 ## 1. Model Name  
 
 Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+
+TuneTracker 1.0 
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
-
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+TuneTracker 1.0 is a simple music recommender designed for classroom exploration. It suggests songs based on a user’s preferred genre, mood, and energy level. It assumes that a listener wants songs that feel similar to a given taste profile, such as happy pop or intense rock.
 
 ---
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
+The recommender looks at a few simple song features, including genre, mood, and energy level. It compares each song to the user’s preferred style and gives points when the song matches the requested genre or mood and when its energy is close to the target. Songs that fit better overall rise higher in the recommendation list.
 
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
 ---
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
+The model uses a small catalog of 20 songs. The dataset includes a mix of genres such as pop, lofi, rock, jazz, ambient, indie pop, hip-hop, metal, and country, along with a variety of moods like happy, chill, intense, relaxed, and dreamy. No new data was added or removed for this version.
 
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+One limitation of the dataset is that it does not cover every style of music or every kind of listener preference, so it is best suited for simple, classroom-style examples rather than full real-world recommendations.
 
 ---
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
+This system works well for users whose taste is fairly clear and easy to describe. It gives sensible results for profiles such as high-energy pop, calm lofi, and intense rock because those preferences are closely tied to the features the model uses.
 
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+The scoring also does a good job of matching obvious patterns, such as preferring high-energy songs for energetic profiles and lower-energy songs for calm profiles. In many cases, the recommended songs feel intuitive and easy to explain.
 
 ---
 
@@ -71,41 +49,27 @@ Prompts:
 - Ways the scoring might unintentionally favor some users  
 
 ---
+Limitations:
+- It rewards exact genre and mood matches very strongly, so a user with broader tastes can get stuck seeing only very similar songs.
+- The energy scoring is quite rigid. It uses an absolute energy gap and then gives no credit once the gap is large. That means a song can be unfairly ignored even if it is still a good fit for other reasons.
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
+I tested three example profiles: High-Energy Pop, Chill Lofi, and Deep Intense Rock. I looked at whether the recommendations changed in a way that matched each profile’s mood and energy.
 
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+- High-Energy Pop vs. Chill Lofi: The pop profile preferred upbeat, brighter songs with higher energy, while the lofi profile shifted toward softer, lower-energy songs with a calmer mood. This makes sense because the two profiles are asking for very different emotional experiences.
+- High-Energy Pop vs. Deep Intense Rock: The pop profile favored songs that felt lively and polished, while the rock profile leaned toward songs with a stronger, more intense feel. This makes sense because the rock profile wants more force and urgency, not just a high-energy sound.
+- Chill Lofi vs. Deep Intense Rock: The lofi profile chose quieter, more relaxed songs, while the rock profile picked songs that felt louder and more aggressive. This makes sense because one profile is about calm focus and the other is about intensity and drive.
 
 ---
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+I would like to improve the model by expanding the dataset to include many more styles of music, so it can better represent different listening tastes. I also want to add more user profiles to test how the system behaves for a wider range of people. In addition, I would make the algorithm more flexible so it is less likely to suggest repetitive songs and gives users a broader mix of recommendations.
 
 ---
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
-
-Prompts:  
-
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+This project helped me understand how recommender systems work in a simple but meaningful way. I found it especially interesting to see how music apps use small signals like genre, mood, and energy to make recommendations that feel personal. I also learned that these systems can be useful, but they can also become too narrow or repetitive if they rely too heavily on a few features.
+  
